@@ -1117,7 +1117,8 @@ body.active { overflow: hidden; }
   margin-left: 5px; /* 与文本的间距 */
   font-size: 0.8em; /* 调整图标大小 */
   vertical-align: middle; /* 垂直居中 */
-  transition: transform 0.3s ease; /* 旋转动画 */
+  transition: transform 0.3s ease; /* 平滑过渡动画 */
+  transform: rotate(0deg); /* 明确设置默认状态为0度 */
 }
 
 /* 鼠标悬停或 JS 激活时旋转箭头 */
@@ -1151,3 +1152,4 @@ body.active { overflow: hidden; }
     font-size: 0.95em; /* 稍微缩小字体 */
   }
 }
+
