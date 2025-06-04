@@ -54,8 +54,8 @@ const dropdownParentLinks = document.querySelectorAll(".navbar-item.has-dropdown
 
 dropdownParentLinks.forEach(link => {
   link.addEventListener("click", function (event) {
-    // 阻止默认链接行为（例如，如果href="#"则不会跳转到顶部）
     event.preventDefault();
+    event.stopPropagation(); // <-- 新增这一行：阻止事件冒泡
 
     const parentItem = this.closest(".navbar-item.has-dropdown");
     if (parentItem) {

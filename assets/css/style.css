@@ -1081,8 +1081,13 @@ body.active { overflow: hidden; }
 
   /* 默认隐藏状态 */
   opacity: 0; /* 完全透明 */
-  visibility: hidden; /* 隐藏元素，使其不可点击 */
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* 平滑过渡动画 */
+  visibility: hidden; /* 确保它被隐藏 */
+  height: 0; /* 关键：确保不占据垂直空间 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  padding-top: 0; /* 确保折叠时内边距也为0 */
+  padding-bottom: 0; /* 确保折叠时内边距也为0 */
+
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, height 0.3s ease, padding 0.3s ease; /* 添加 height 和 padding 的过渡 */
 }
 
 /* 鼠标悬停在父级导航项时显示下拉菜单 (桌面端) */
@@ -1090,6 +1095,8 @@ body.active { overflow: hidden; }
   opacity: 1; /* 完全不透明 */
   visibility: visible; /* 显示元素 */
   transform: translateX(-50%) translateY(0); /* 恢复到原始位置，同时保持居中 */
+  height: auto; /* 恢复高度 */
+  padding: 10px 0; /* 恢复内边距 */
 }
 
 /* 下拉菜单中每个链接的样式 */
@@ -1144,6 +1151,17 @@ body.active { overflow: hidden; }
     padding: 5px 0; /* 调整内边距 */
     margin-top: 5px; /* 在父级链接下方留出一点空间 */
     background-color: transparent; /* 保持与移动菜单背景一致 */
+    height: auto; /* 恢复高度 */
+  }
+
+  /* 确保在移动端非激活状态下，下拉菜单完全折叠 */
+  .navbar-item.has-dropdown:not(.active) > .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
   }
 
   /* 移动端下拉菜单项的缩进 */
@@ -1152,4 +1170,3 @@ body.active { overflow: hidden; }
     font-size: 0.95em; /* 稍微缩小字体 */
   }
 }
-
