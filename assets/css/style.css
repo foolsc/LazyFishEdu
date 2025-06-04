@@ -1055,7 +1055,7 @@ body.active { overflow: hidden; }
 }
 
 /*-----------------------------------*\
-  #Dropdown Navigation Styles
+  #Dropdown Navigation Styles (Optimized for Mobile)
 \*-----------------------------------*/
 
 /* Dropdown 容器的定位基础 */
@@ -1067,14 +1067,11 @@ body.active { overflow: hidden; }
 .dropdown-menu {
   position: absolute;
   top: 100%; /* 定位在父级链接的正下方 */
-  /* 调整点1: 从 left: 0; 改为 left: 50%; */
-  left: 50%; 
-  /* 调整点2: 添加 transform: translateX(-50%); 实现水平居中 */
+  left: 50%; /* 水平居中 */
   transform: translateX(-50%) translateY(10px); /* 结合了居中和初始微移 */
   
   background-color: var(--background-secondary); /* 使用模板的背景色变量 */
   min-width: 220px; /* 下拉菜单的最小宽度，可根据内容调整 */
-  /* 调整点3: 增加 max-width，防止在小屏幕上超出 */
   max-width: calc(100vw - 20px); /* 确保不会超出视口宽度，留10px边距 */
   box-shadow: var(--shadow-1); /* 使用模板的阴影变量 */
   border-radius: var(--radius-10); /* 使用模板的圆角变量 */
@@ -1088,7 +1085,7 @@ body.active { overflow: hidden; }
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* 平滑过渡动画 */
 }
 
-/* 鼠标悬停在父级导航项时显示下拉菜单 */
+/* 鼠标悬停在父级导航项时显示下拉菜单 (桌面端) */
 .navbar-item.has-dropdown:hover > .dropdown-menu {
   opacity: 1; /* 完全不透明 */
   visibility: visible; /* 显示元素 */
@@ -1123,37 +1120,34 @@ body.active { overflow: hidden; }
   transition: transform 0.3s ease; /* 旋转动画 */
 }
 
-.navbar-item.has-dropdown:hover .navbar-link ion-icon {
-  transform: rotate(180deg); /* 鼠标悬停时旋转180度 */
+/* 鼠标悬停或 JS 激活时旋转箭头 */
+.navbar-item.has-dropdown:hover .navbar-link ion-icon,
+.navbar-item.has-dropdown.active .navbar-link ion-icon {
+  transform: rotate(180deg);
 }
 
 /*
-  注意：对于移动端菜单，如果你的 `script.js` 控制了导航的展开/折叠，
-  你可能需要修改 `script.js` 来处理点击父级菜单时下拉菜单的展开/折叠，
-  而不是纯 CSS 的 `:hover` 效果。
-  目前这个 CSS 主要是针对桌面端悬停效果。
+  移动端/JavaScript 控制的下拉菜单样式
+  当 .has-dropdown 元素被 JS 添加 'active' 类时应用
 */
+@media (max-width: 991px) { /* 假设这是你的移动端断点，与模板的 media query 保持一致 */
+  .navbar-item.has-dropdown.active > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* 移除 translateX(-50%)，使其在移动菜单中正常流动 */
+    position: static; /* 改变为静态定位，使其在移动菜单中垂直堆叠 */
+    width: 100%; /* 占据父级宽度 */
+    min-width: unset; /* 移除最小宽度限制 */
+    box-shadow: none; /* 移除阴影，使菜单更简洁 */
+    border-radius: 0; /* 移除圆角 */
+    padding: 5px 0; /* 调整内边距 */
+    margin-top: 5px; /* 在父级链接下方留出一点空间 */
+    background-color: transparent; /* 保持与移动菜单背景一致 */
+  }
 
-/* For mobile/JS controlled dropdown */
-.navbar-item.has-dropdown.active > .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  /* Adjust for mobile layout if needed, e.g., full width */
-  position: static; /* Change to static for flow within mobile menu */
-  width: 100%;
-  box-shadow: none; /* Remove shadow for cleaner look in mobile menu */
-  border-radius: 0;
-  padding: 5px 0;
-}
-
-/* For mobile/JS controlled dropdown links */
-.navbar-item.has-dropdown.active .dropdown-menu a {
-  padding-left: 40px; /* Indent sub-items for clarity */
-  font-size: 0.95em;
-}
-
-/* Adjust icon rotation for mobile/JS toggle */
-.navbar-item.has-dropdown.active .navbar-link ion-icon {
-  transform: rotate(180deg);
+  /* 移动端下拉菜单项的缩进 */
+  .navbar .dropdown-menu a {
+    padding-left: 40px; /* 增加缩进，使其看起来是子菜单 */
+    font-size: 0.95em; /* 稍微缩小字体 */
+  }
 }
