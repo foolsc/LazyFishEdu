@@ -1067,9 +1067,15 @@ body.active { overflow: hidden; }
 .dropdown-menu {
   position: absolute;
   top: 100%; /* 定位在父级链接的正下方 */
-  left: 0;
+  /* 调整点1: 从 left: 0; 改为 left: 50%; */
+  left: 50%; 
+  /* 调整点2: 添加 transform: translateX(-50%); 实现水平居中 */
+  transform: translateX(-50%) translateY(10px); /* 结合了居中和初始微移 */
+  
   background-color: var(--background-secondary); /* 使用模板的背景色变量 */
   min-width: 220px; /* 下拉菜单的最小宽度，可根据内容调整 */
+  /* 调整点3: 增加 max-width，防止在小屏幕上超出 */
+  max-width: calc(100vw - 20px); /* 确保不会超出视口宽度，留10px边距 */
   box-shadow: var(--shadow-1); /* 使用模板的阴影变量 */
   border-radius: var(--radius-10); /* 使用模板的圆角变量 */
   padding: 10px 0; /* 内部上下边距 */
@@ -1079,7 +1085,6 @@ body.active { overflow: hidden; }
   /* 默认隐藏状态 */
   opacity: 0; /* 完全透明 */
   visibility: hidden; /* 隐藏元素，使其不可点击 */
-  transform: translateY(10px); /* 初始时向下微移，用于动画效果 */
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* 平滑过渡动画 */
 }
 
@@ -1087,7 +1092,7 @@ body.active { overflow: hidden; }
 .navbar-item.has-dropdown:hover > .dropdown-menu {
   opacity: 1; /* 完全不透明 */
   visibility: visible; /* 显示元素 */
-  transform: translateY(0); /* 恢复到原始位置 */
+  transform: translateX(-50%) translateY(0); /* 恢复到原始位置，同时保持居中 */
 }
 
 /* 下拉菜单中每个链接的样式 */
