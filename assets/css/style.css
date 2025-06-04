@@ -1053,3 +1053,78 @@ body.active { overflow: hidden; }
   }
 
 }
+
+/*-----------------------------------*\
+  #Dropdown Navigation Styles
+\*-----------------------------------*/
+
+/* Dropdown 容器的定位基础 */
+.navbar-item.has-dropdown {
+  position: relative; /* 确保下拉菜单相对于此元素定位 */
+}
+
+/* 下拉菜单的默认样式（隐藏） */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* 定位在父级链接的正下方 */
+  left: 0;
+  background-color: var(--background-secondary); /* 使用模板的背景色变量 */
+  min-width: 220px; /* 下拉菜单的最小宽度，可根据内容调整 */
+  box-shadow: var(--shadow-1); /* 使用模板的阴影变量 */
+  border-radius: var(--radius-10); /* 使用模板的圆角变量 */
+  padding: 10px 0; /* 内部上下边距 */
+  list-style: none; /* 移除默认的列表点 */
+  z-index: 100; /* 确保下拉菜单显示在其他内容之上 */
+
+  /* 默认隐藏状态 */
+  opacity: 0; /* 完全透明 */
+  visibility: hidden; /* 隐藏元素，使其不可点击 */
+  transform: translateY(10px); /* 初始时向下微移，用于动画效果 */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; /* 平滑过渡动画 */
+}
+
+/* 鼠标悬停在父级导航项时显示下拉菜单 */
+.navbar-item.has-dropdown:hover > .dropdown-menu {
+  opacity: 1; /* 完全不透明 */
+  visibility: visible; /* 显示元素 */
+  transform: translateY(0); /* 恢复到原始位置 */
+}
+
+/* 下拉菜单中每个链接的样式 */
+.dropdown-menu li {
+  padding: 0; /* 移除父级li可能带来的默认padding */
+}
+
+.dropdown-menu a {
+  display: block; /* 让整个区域可点击 */
+  padding: 8px 20px; /* 每个下拉项的内边距 */
+  color: var(--on-background); /* 文本颜色 */
+  text-decoration: none; /* 移除下划线 */
+  white-space: nowrap; /* 防止文本换行 */
+  transition: background-color 0.2s ease, color 0.2s ease; /* 悬停时的颜色过渡 */
+}
+
+/* 下拉菜单项悬停时的样式 */
+.dropdown-menu a:hover {
+  background-color: var(--accent-1); /* 悬停时背景色 */
+  color: var(--white); /* 悬停时文本颜色 */
+}
+
+/* 调整箭头图标的样式和旋转动画 */
+.navbar-item.has-dropdown .navbar-link ion-icon {
+  margin-left: 5px; /* 与文本的间距 */
+  font-size: 0.8em; /* 调整图标大小 */
+  vertical-align: middle; /* 垂直居中 */
+  transition: transform 0.3s ease; /* 旋转动画 */
+}
+
+.navbar-item.has-dropdown:hover .navbar-link ion-icon {
+  transform: rotate(180deg); /* 鼠标悬停时旋转180度 */
+}
+
+/*
+  注意：对于移动端菜单，如果你的 `script.js` 控制了导航的展开/折叠，
+  你可能需要修改 `script.js` 来处理点击父级菜单时下拉菜单的展开/折叠，
+  而不是纯 CSS 的 `:hover` 效果。
+  目前这个 CSS 主要是针对桌面端悬停效果。
+*/

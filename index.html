@@ -42,7 +42,7 @@
     <div class="container">
 
       <a href="./index.html" class="logo">
-        <img src="./assets/images/logo.svg" width="129" height="40" alt="咖啡知识博客 Logo">
+        <img src="./assets/images/lazy_fish_logo.png" width="129" height="40" alt="咖啡知识博客 Logo">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -52,12 +52,30 @@
             <a href="./index.html" class="navbar-link hover:underline" data-nav-link>首页</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="./handpour-coffee-history-equipment.html" class="navbar-link hover:underline" data-nav-link>手冲咖啡</a>
+          <!-- 手冲咖啡下拉菜单 -->
+          <li class="navbar-item has-dropdown">
+            <a href="#" class="navbar-link hover:underline" data-nav-link>
+              手冲咖啡 <ion-icon name="chevron-down-outline"></ion-icon>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="./coffee-brewing-overview.html">咖啡冲煮方式概览</a></li>
+              <li><a href="./handpour-coffee-history-equipment.html">手冲咖啡：历史与器具</a></li>
+              <li><a href="./handpour-coffee-parameters-process.html">手冲咖啡：参数与流程</a></li>
+              <li><a href="./handpour-coffee-flavor-factors.html">手冲咖啡风味解析</a></li>
+            </ul>
           </li>
 
-          <li class="navbar-item">
-            <a href="./espresso-definition-tasting.html" class="navbar-link hover:underline" data-nav-link>意式咖啡</a>
+          <!-- 意式咖啡下拉菜单 -->
+          <li class="navbar-item has-dropdown">
+            <a href="#" class="navbar-link hover:underline" data-nav-link>
+              意式咖啡 <ion-icon name="chevron-down-outline"></ion-icon>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="./espresso-definition-tasting.html">意式浓缩：定义与品鉴</a></li>
+              <li><a href="./espresso-making-factors.html">意式浓缩制作精要</a></li>
+              <li><a href="./espresso-milk-latte-art.html">意式咖啡的牛奶艺术</a></li>
+              <li><a href="./espresso-beans-selection.html">意式咖啡豆选用指南</a></li>
+            </ul>
           </li>
 
         </ul>
@@ -85,7 +103,7 @@
         <div class="container">
 
           <h1 class="h1 hero-title">
-            <strong class="strong">你好，我们是咖啡知识博客。</strong> 探索咖啡的奥秘，分享故事与创意。
+            <strong class="strong">你好，我们是咖啡知识博客。</strong>
           </h1>
 
           <div class="wrapper">
