@@ -1133,3 +1133,27 @@ body.active { overflow: hidden; }
   而不是纯 CSS 的 `:hover` 效果。
   目前这个 CSS 主要是针对桌面端悬停效果。
 */
+
+/* For mobile/JS controlled dropdown */
+.navbar-item.has-dropdown.active > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  /* Adjust for mobile layout if needed, e.g., full width */
+  position: static; /* Change to static for flow within mobile menu */
+  width: 100%;
+  box-shadow: none; /* Remove shadow for cleaner look in mobile menu */
+  border-radius: 0;
+  padding: 5px 0;
+}
+
+/* For mobile/JS controlled dropdown links */
+.navbar-item.has-dropdown.active .dropdown-menu a {
+  padding-left: 40px; /* Indent sub-items for clarity */
+  font-size: 0.95em;
+}
+
+/* Adjust icon rotation for mobile/JS toggle */
+.navbar-item.has-dropdown.active .navbar-link ion-icon {
+  transform: rotate(180deg);
+}
