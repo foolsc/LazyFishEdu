@@ -19,47 +19,120 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <style>
-    /* Custom styles for article content */
-    .article-content { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; font-size: 1.1rem; color: var(--on-background); }
-    .article-content h1 { font-size: 2.5rem; text-align: center; margin-bottom: 1em; color: var(--eerie-black); letter-spacing: 0.05em; }
-    .article-content h2 { font-size: 2rem; margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; color: var(--on-background); }
-    .article-content h3 { font-size: 1.75rem; margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; color: var(--on-background); }
-    .article-content h4 { font-size: 1.5rem; margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; color: var(--on-background); }
-    .article-content p { margin-bottom: 1em; }
-    .article-content ul, .article-content ol { margin-bottom: 1em; padding-left: 25px; }
-    .article-content li { margin-bottom: 0.5em; }
-    
+    /* Custom styles for article content - Optimized for readability and design */
+    .article-content {
+      max-width: 900px; /* 增加最大宽度，提供更开阔的阅读空间 */
+      margin: 0 auto;
+      padding: 30px; /* 增加内边距 */
+      line-height: 1.7; /* 优化行高，提升可读性 */
+      font-size: 1.6rem; /* 基础字体大小设置为1.6rem */
+      color: var(--eerie-black); /* 使用深色文本，对比度更强 */
+      background-color: var(--white); /* 白色背景，确保内容突出 */
+      border-radius: var(--radius-16); /* 整体圆角 */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* 柔和的整体阴影 */
+      padding-bottom: 50px; /* 底部额外填充，与下一模块按钮保持距离 */
+    }
+
+    .article-content h1 {
+      font-size: 2.8rem; /* 更大的主标题 */
+      text-align: center;
+      margin-bottom: 0.8em;
+      color: var(--blue-ryb); /* 品牌色作为主标题颜色 */
+      letter-spacing: 0.08em; /* 增加字距 */
+      font-weight: 700; /* 加粗 */
+      text-transform: uppercase; /* 转换为大写，增加设计感 */
+      position: relative;
+      padding-bottom: 15px; /* 为下划线留出空间 */
+    }
+    .article-content h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px; /* 短下划线 */
+      height: 3px;
+      background-color: var(--blue-ryb);
+      border-radius: 2px;
+    }
+
+    .article-content h2 {
+      font-size: 2.2rem; /* 二级标题 */
+      margin-top: 2.5em; /* 上方更大间距 */
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+      color: var(--eerie-black_80); /* 略浅的深色 */
+      border-left: 5px solid var(--blue-ryb); /* 左侧强调边框 */
+      padding-left: 15px;
+      font-weight: 600;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem; /* 三级标题 */
+      margin-top: 1.5em;
+      margin-bottom: 0.6em;
+      line-height: 1.4;
+      color: var(--eerie-black_60); /* 更浅的深色 */
+      font-weight: 500;
+      padding-left: 10px; /* 标题左侧留白 */
+    }
+    .article-content h4 { font-size: 1.3rem; } /* 四级标题 */
+
+    .article-content p {
+      margin-bottom: 1.2em; /* 增加段落间距 */
+      text-align: justify; /* 两端对齐，使文本边缘整齐 */
+      padding: 0 10px; /* 段落左右内边距，使其不贴边 */
+    }
+
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5em;
+      padding-left: 40px; /* 增加左侧缩进 */
+      list-style: none; /* 移除默认列表样式 */
+    }
+    .article-content li {
+      margin-bottom: 0.8em;
+      position: relative;
+      padding-left: 25px; /* 为自定义子弹头留出空间 */
+    }
+    .article-content li::before {
+      content: '☕'; /* 自定义子弹头图标 */
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue-ryb); /* 图标颜色 */
+      font-size: 1.1em;
+    }
+
     /* 图片和视频的通用样式 */
-    .article-content img, .article-content video { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: var(--radius-10); box-shadow: var(--shadow-1); }
-    .article-meta { text-align: center; color: var(--light-gray); margin-bottom: 30px; font-size: 0.9rem; }
-    .next-module-button-container { text-align: center; margin-top: 40px; margin-bottom: 40px; }
-    .next-module-button {
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: var(--blue-ryb);
-        color: var(--white);
-        text-decoration: none;
-        border-radius: var(--radius-10);
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 8px hsla(232, 100%, 60%, 0.3);
+    .article-content img {
+      max-width: 90%; /* 图片宽度略小于内容区，留白 */
+      height: auto;
+      display: block;
+      margin: 30px auto; /* 增加图片上下外边距 */
+      border-radius: var(--radius-10);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+      transition: transform 0.3s ease; /* 添加悬停动画 */
     }
-    .next-module-button:hover {
-        background-color: hsl(232, 100%, 50%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px hsla(232, 100%, 60%, 0.4);
+    .article-content img:hover {
+      transform: scale(1.02); /* 悬停时轻微放大 */
     }
-    /* 响应式视频容器样式 (保留) */
+
+    /* 视频容器样式（与整体风格匹配） */
     .video-responsive {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 宽高比 */
       height: 0;
       overflow: hidden;
-      max-width: 100%;
+      max-width: 90%; /* 视频宽度略小于内容区，留白 */
       background: var(--eerie-black);
-      margin: 20px auto;
-      border-radius: var(--radius-10);
-      box-shadow: var(--shadow-1);
+      margin: 30px auto; /* 与图片保持一致的上下外边距 */
+      border-radius: var(--radius-10); /* 与图片保持一致的圆角 */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 与图片保持一致的阴影 */
+      transition: transform 0.3s ease; /* 添加悬停动画 */
+    }
+    .video-responsive:hover {
+      transform: scale(1.02); /* 悬停时轻微放大 */
     }
     .video-responsive iframe,
     .video-responsive object,
@@ -69,6 +142,40 @@
       left: 0;
       width: 100%;
       height: 100%;
+    }
+
+    .article-meta {
+      text-align: center;
+      color: var(--light-gray);
+      margin-bottom: 40px; /* 增加与主内容间距 */
+      font-size: 1rem;
+      font-style: italic; /* 斜体 */
+      border-bottom: 1px dashed var(--gainsboro); /* 虚线分隔 */
+      padding-bottom: 20px;
+    }
+
+    /* Next module button (保持一致) */
+    .next-module-button-container {
+      text-align: center;
+      margin-top: 60px; /* 增加顶部间距 */
+      margin-bottom: 60px; /* 增加底部间距 */
+    }
+    .next-module-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: var(--blue-ryb);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: var(--radius-pill); /* 使用圆角 */
+        font-weight: 600;
+        font-size: 1.15rem;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px hsla(232, 100%, 60%, 0.3);
+    }
+    .next-module-button:hover {
+        background-color: hsl(232, 100%, 50%);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px hsla(232, 100%, 60%, 0.4);
     }
 
     /* 轮播图样式 */
@@ -98,6 +205,7 @@
       justify-content: center;
       padding: 20px; /* slide 内部间距 */
       box-sizing: border-box; /* 包含 padding 在宽度内 */
+      min-height: 550px; /* 确保每个slide有最小高度，适应图片和文字 */
     }
 
     .carousel-slide img {
@@ -111,7 +219,7 @@
     }
 
     .carousel-slide figcaption {
-      font-size: 1rem;
+      font-size: 1rem; /* 轮播图图说字体大小 */
       color: var(--eerie-black_60);
       text-align: center; /* 图说居中 */
       line-height: 1.4;
@@ -185,12 +293,36 @@
     }
 
     /* 响应式调整 */
-    @media (max-width: 768px) {
-      .article-content { padding: 15px; }
-      .article-content h1 { font-size: 2rem; }
-      .article-content h2 { font-size: 1.7rem; }
+    @media (max-width: 991px) {
+      .article-content {
+        max-width: 100%;
+        padding: 25px;
+        border-radius: 0; /* 小屏幕移除整体圆角 */
+        box-shadow: none; /* 小屏幕移除整体阴影 */
+      }
+      .article-content h1 { font-size: 2.2rem; padding-bottom: 10px; }
+      .article-content h1::after { width: 60px; height: 2px; }
+      .article-content h2 { font-size: 1.8rem; padding-left: 10px; border-left-width: 4px; margin-top: 2em; }
+      .article-content h3 { font-size: 1.3rem; margin-top: 1.2em; padding-left: 0; } /* 移除三级标题左侧padding */
+      .article-content p { padding: 0 5px; }
+      .article-content ul, .article-content ol { padding-left: 30px; }
+      .article-content li { padding-left: 20px; }
+      .article-content li::before { font-size: 1em; }
+      .article-content img, .video-responsive { margin: 20px auto; }
+      .article-meta { margin-bottom: 30px; }
+      .next-module-button-container { margin-top: 50px; margin-bottom: 50px; }
+
+      /* 轮播图响应式调整 */
       .carousel-container {
         border-radius: var(--radius-10);
+        max-width: 100%; /* 移动端全宽 */
+      }
+      .carousel-slide {
+        min-height: 400px; /* 移动端更小的高度 */
+        padding: 15px;
+      }
+      .carousel-slide img {
+        max-height: 350px; /* 移动端更小的图片高度 */
       }
       .carousel-button {
         padding: 10px 7px;
@@ -204,6 +336,22 @@
         width: 10px;
         height: 10px;
       }
+    }
+
+    @media (max-width: 575px) {
+      .article-content { padding: 15px; }
+      .article-content h1 { font-size: 1.8rem; }
+      .article-content h1::after { width: 50px; }
+      .article-content h2 { font-size: 1.5rem; border-left-width: 3px; }
+      .article-content h3 { font-size: 1.1rem; }
+      .article-content p { padding: 0; }
+      .article-content ul, .article-content ol { padding-left: 20px; }
+      .article-content li { padding-left: 18px; }
+      .article-content li::before { font-size: 0.9em; }
+      .article-content img, .video-responsive { margin: 15px auto; }
+      .article-meta { margin-bottom: 20px; font-size: 0.85rem; }
+      .next-module-button { padding: 10px 20px; font-size: 1rem; }
+      .next-module-button-container { margin-top: 40px; margin-bottom: 40px; }
     }
   </style>
 
@@ -276,23 +424,18 @@
             <div class="carousel-track">
               <figure class="carousel-slide">
                 <img src="./assets/images/4-1.jpg" alt="单段式冲煮示意图">
-                <figcaption><strong>单段式冲煮：</strong> 简单快捷，适合追求直接风味。</figcaption>
               </figure>
               <figure class="carousel-slide">
                 <img src="./assets/images/4-2.jpg" alt="点滴法冲煮示意图">
-                <figcaption><strong>点滴法：</strong> 缓慢精确注水，带来更干净醇厚的口感。</figcaption>
               </figure>
               <figure class="carousel-slide">
                 <img src="./assets/images/4-3.jpg" alt="中心注水法示意图">
-                <figcaption><strong>中心注水法：</strong> 聚焦粉层中心，萃取效率高。</figcaption>
               </figure>
               <figure class="carousel-slide">
                 <img src="./assets/images/4-4.jpg" alt="绕圈注水法示意图">
-                <figcaption><strong>绕圈注水法：</strong> 均匀萃取，风味平衡。</figcaption>
               </figure>
               <figure class="carousel-slide">
                 <img src="./assets/images/4-5.jpg" alt="综合冲煮法示意图">
-                <figcaption><strong>综合冲煮法：</strong> 结合多种技巧，实现理想风味。</figcaption>
               </figure>
             </div>
             <button class="carousel-button prev">&lt;</button>

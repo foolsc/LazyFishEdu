@@ -20,40 +20,200 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <style>
-    /* Custom styles for article content */
-    .article-content { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; font-size: 1.1rem; color: var(--on-background); }
-    .article-content h1, .article-content h2, .article-content h3, .article-content h4 { color: var(--on-background); margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; }
-    .article-content h1 { font-size: 2.5rem; text-align: center; }
-    .article-content h2 { font-size: 2rem; }
-    .article-content h3 { font-size: 1.75rem; }
-    .article-content h4 { font-size: 1.5rem; }
-    .article-content p { margin-bottom: 1em; }
-    .article-content ul, .article-content ol { margin-bottom: 1em; padding-left: 25px; }
-    .article-content li { margin-bottom: 0.5em; }
-    .article-content img { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: var(--radius-10); box-shadow: var(--shadow-1); }
-    .article-meta { text-align: center; color: var(--light-gray); margin-bottom: 30px; font-size: 0.9rem; }
-    .next-module-button-container { text-align: center; margin-top: 40px; margin-bottom: 40px; }
+    /* Custom styles for article content - Optimized for readability and design */
+    .article-content {
+      max-width: 900px; /* 增加最大宽度，提供更开阔的阅读空间 */
+      margin: 0 auto;
+      padding: 30px; /* 增加内边距 */
+      line-height: 1.7; /* 优化行高，提升可读性 */
+      font-size: 1.6rem; /* 基础字体大小设置为1.6rem */
+      color: var(--eerie-black); /* 使用深色文本，对比度更强 */
+      background-color: var(--white); /* 白色背景，确保内容突出 */
+      border-radius: var(--radius-16); /* 整体圆角 */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* 柔和的整体阴影 */
+      padding-bottom: 50px; /* 底部额外填充，与下一模块按钮保持距离 */
+    }
+
+    .article-content h1 {
+      font-size: 2.8rem; /* 更大的主标题 */
+      text-align: center;
+      margin-bottom: 0.8em;
+      color: var(--blue-ryb); /* 品牌色作为主标题颜色 */
+      letter-spacing: 0.08em; /* 增加字距 */
+      font-weight: 700; /* 加粗 */
+      text-transform: uppercase; /* 转换为大写，增加设计感 */
+      position: relative;
+      padding-bottom: 15px; /* 为下划线留出空间 */
+    }
+    .article-content h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px; /* 短下划线 */
+      height: 3px;
+      background-color: var(--blue-ryb);
+      border-radius: 2px;
+    }
+
+    .article-content h2 {
+      font-size: 2.2rem; /* 二级标题 */
+      margin-top: 2.5em; /* 上方更大间距 */
+      margin-bottom: 0.8em;
+      line-height: 1.3;
+      color: var(--eerie-black_80); /* 略浅的深色 */
+      border-left: 5px solid var(--blue-ryb); /* 左侧强调边框 */
+      padding-left: 15px;
+      font-weight: 600;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem; /* 三级标题 */
+      margin-top: 1.5em;
+      margin-bottom: 0.6em;
+      line-height: 1.4;
+      color: var(--eerie-black_60); /* 更浅的深色 */
+      font-weight: 500;
+      padding-left: 10px; /* 标题左侧留白 */
+    }
+    .article-content h4 { font-size: 1.3rem; } /* 四级标题 */
+
+    .article-content p {
+      margin-bottom: 1.2em; /* 增加段落间距 */
+      text-align: justify; /* 两端对齐，使文本边缘整齐 */
+      padding: 0 10px; /* 段落左右内边距，使其不贴边 */
+    }
+
+    .article-content ul, .article-content ol {
+      margin-bottom: 1.5em;
+      padding-left: 40px; /* 增加左侧缩进 */
+      list-style: none; /* 移除默认列表样式 */
+    }
+    .article-content li {
+      margin-bottom: 0.8em;
+      position: relative;
+      padding-left: 25px; /* 为自定义子弹头留出空间 */
+    }
+    .article-content li::before {
+      content: '☕'; /* 自定义子弹头图标 */
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue-ryb); /* 图标颜色 */
+      font-size: 1.1em;
+    }
+
+    /* 图片样式 */
+    .article-content img {
+      max-width: 90%; /* 图片宽度略小于内容区，留白 */
+      height: auto;
+      display: block;
+      margin: 30px auto; /* 增加图片上下外边距 */
+      border-radius: var(--radius-10);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+      transition: transform 0.3s ease; /* 添加悬停动画 */
+    }
+    .article-content img:hover {
+      transform: scale(1.02); /* 悬停时轻微放大 */
+    }
+
+    /* 视频容器样式（与整体风格匹配） */
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 宽高比 */
+      height: 0;
+      overflow: hidden;
+      max-width: 90%; /* 视频宽度略小于内容区，留白 */
+      background: var(--eerie-black);
+      margin: 30px auto; /* 与图片保持一致的上下外边距 */
+      border-radius: var(--radius-10); /* 与图片保持一致的圆角 */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 与图片保持一致的阴影 */
+      transition: transform 0.3s ease; /* 添加悬停动画 */
+    }
+    .video-responsive:hover {
+      transform: scale(1.02); /* 悬停时轻微放大 */
+    }
+    .video-responsive iframe,
+    .video-responsive object,
+    .video-responsive embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .article-meta {
+      text-align: center;
+      color: var(--light-gray);
+      margin-bottom: 40px; /* 增加与主内容间距 */
+      font-size: 1rem;
+      font-style: italic; /* 斜体 */
+      border-bottom: 1px dashed var(--gainsboro); /* 虚线分隔 */
+      padding-bottom: 20px;
+    }
+
+    /* Next module button (保持一致) */
+    .next-module-button-container {
+      text-align: center;
+      margin-top: 60px; /* 增加顶部间距 */
+      margin-bottom: 60px; /* 增加底部间距 */
+    }
     .next-module-button {
         display: inline-block;
-        padding: 12px 25px;
-        background-color: var(--blue-ryb); /* 使用模板的蓝色 */
+        padding: 15px 30px;
+        background-color: var(--blue-ryb);
         color: var(--white);
         text-decoration: none;
-        border-radius: var(--radius-10);
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 8px hsla(232, 100%, 60%, 0.3);
+        border-radius: var(--radius-pill); /* 使用圆角 */
+        font-weight: 600;
+        font-size: 1.15rem;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px hsla(232, 100%, 60%, 0.3);
     }
     .next-module-button:hover {
-        background-color: hsl(232, 100%, 50%); /* 鼠标悬停时颜色变深 */
-        transform: translateY(-2px); /* 鼠标悬停时轻微上浮 */
-        box-shadow: 0 6px 12px hsla(232, 100%, 60%, 0.4);
+        background-color: hsl(232, 100%, 50%);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px hsla(232, 100%, 60%, 0.4);
     }
-    @media (max-width: 768px) {
+
+    /* 响应式调整 */
+    @media (max-width: 991px) {
+      .article-content {
+        max-width: 100%;
+        padding: 25px;
+        border-radius: 0; /* 小屏幕移除整体圆角 */
+        box-shadow: none; /* 小屏幕移除整体阴影 */
+      }
+      .article-content h1 { font-size: 2.2rem; padding-bottom: 10px; }
+      .article-content h1::after { width: 60px; height: 2px; }
+      .article-content h2 { font-size: 1.8rem; padding-left: 10px; border-left-width: 4px; margin-top: 2em; }
+      .article-content h3 { font-size: 1.3rem; margin-top: 1.2em; padding-left: 0; } /* 移除三级标题左侧padding */
+      .article-content p { padding: 0 5px; }
+      .article-content ul, .article-content ol { padding-left: 30px; }
+      .article-content li { padding-left: 20px; }
+      .article-content li::before { font-size: 1em; }
+      .article-content img, .video-responsive { margin: 20px auto; }
+      .article-meta { margin-bottom: 30px; }
+      .next-module-button-container { margin-top: 50px; margin-bottom: 50px; }
+    }
+
+    @media (max-width: 575px) {
       .article-content { padding: 15px; }
-      .article-content h1 { font-size: 2rem; }
-      .article-content h2 { font-size: 1.7rem; }
-      .article-content h3 { font-size: 1.5rem; }
+      .article-content h1 { font-size: 1.8rem; }
+      .article-content h1::after { width: 50px; }
+      .article-content h2 { font-size: 1.5rem; border-left-width: 3px; }
+      .article-content h3 { font-size: 1.1rem; }
+      .article-content p { padding: 0; }
+      .article-content ul, .article-content ol { padding-left: 20px; }
+      .article-content li { padding-left: 18px; }
+      .article-content li::before { font-size: 0.9em; }
+      .article-content img, .video-responsive { margin: 15px auto; }
+      .article-meta { margin-bottom: 20px; font-size: 0.85rem; }
+      .next-module-button { padding: 10px 20px; font-size: 1rem; }
+      .next-module-button-container { margin-top: 40px; margin-bottom: 40px; }
     }
   </style>
 
@@ -69,7 +229,7 @@
         <ul class="navbar-list">
           <li class="navbar-item"><a href="./index.html" class="navbar-link hover:underline" data-nav-link>首页</a></li>
           <li class="navbar-item">
-            <a href="./coffee-brewing-overview.html" class="navbar-link hover:underline" data-nav-link>咖啡分类：探索多样化的咖啡</a>
+            <a href="./coffee-brewing-overview.html" class="navbar-link hover:underline" data-nav-link>咖啡分类</a>
           </li>
           <!-- 手冲咖啡下拉菜单 -->
           <li class="navbar-item has-dropdown">
@@ -80,7 +240,7 @@
               <li><a href="./handpour-coffee-history-equipment.html" data-nav-link>手冲咖啡：历史与器具</a></li>
               <li><a href="./handpour-coffee-parameters-process.html" data-nav-link>手冲咖啡：参数与流程</a></li>
               <li><a href="./handpour-coffee-common-methods.html" data-nav-link>手冲咖啡：常见冲煮法</a></li>
-              <li><a href="./handpour-coffee-flavor-factors.html" data-nav-link>手冲咖啡：风味解析</a></li>
+              <li><a href="./handpour-coffee-flavor-factors.html" data-nav-link>手冲咖啡风味解析</a></li>
             </ul>
           </li>
 
@@ -156,11 +316,11 @@
           <h3>水温</h3>
           <p>水温会影响咖啡的萃取效率，是决定一杯咖啡品质好坏的重要因素。合适的水温可以充分萃取咖啡豆中的物质。</p>
           <p>手冲水温一般控制在83-95℃之间，根据咖啡烘焙度而定：</p>
-          <ul>
-            <li>浅烘焙：92-96℃（突出果酸与花香）</li>
-            <li>中烘焙：88-92℃（平衡酸甜）</li>
-            <li>深烘焙：84-88℃（降低焦苦感）</li>
-          </ul>
+            <ul>
+              <li>浅烘焙：92-96℃（突出果酸与花香）</li>
+              <li>中烘焙：88-92℃（平衡酸甜）</li>
+              <li>深烘焙：84-88℃（降低焦苦感）</li>
+            </ul>
           <ul>
             <li><strong>水温过高</strong>：萃取的咖啡物质太多，会导致咖啡苦涩，风味不明显。</li>
             <li><strong>水温过低</strong>：导致萃取不足，风味寡淡，缺乏层次。</li>
