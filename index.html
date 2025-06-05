@@ -30,6 +30,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <style>
+    /* Custom styles for hero section text */
+    .hero-title {
+      position: relative; /* Ensure the position for absolute child */
+      display: flex; /* Use flexbox for alignment */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text within each line */
+    }
+
+    .hero-title .strong {
+      /* Keep existing strong style for "咸鱼咖啡" if any, or add new ones */
+      font-size: var(--fs-1); /* Example: using a large font size variable */
+      line-height: 1.2;
+      margin-bottom: 0.2em; /* Space between the two lines */
+    }
+
+    .hero-title p {
+      /* Remove fixed text-indent */
+      text-indent: 0 !important; /* Override any inline or inherited text-indent */
+      font-size: 1.8rem; /* Adjust font size for "咖啡知识培训" */
+      font-weight: 500;
+      color: var(--eerie-black_60); /* Lighter color for secondary text */
+      margin-top: 0.5em; /* Add some margin from the title above it */
+      line-height: 1.2;
+    }
+
+    /* Responsive adjustments for hero section text */
+    @media (max-width: 991px) {
+      .hero-title p {
+        font-size: 1.5rem; /* Smaller font size on medium screens */
+      }
+    }
+
+    @media (max-width: 575px) {
+      .hero-title p {
+        font-size: 1.2rem; /* Even smaller font size on small screens */
+        white-space: normal; /* Allow text to wrap naturally */
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -109,7 +150,7 @@
 
           <h1 class="h1 hero-title">
             <strong class="strong">咸鱼咖啡</strong>
-            <p style="text-indent: 450px;">咖啡知识培训</p>
+            <p>咖啡知识培训</p> <!-- Removed inline text-indent -->
           </h1>
 
           <div class="wrapper">
