@@ -1192,3 +1192,26 @@ body.active { overflow: hidden; }
     transform: translateY(-2px); /* 鼠标悬停时轻微上浮 */
     box-shadow: 0 6px 12px hsla(232, 100%, 60%, 0.4);
 }
+
+/* 响应式视频容器 */
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 宽高比 (高 / 宽 * 100%) */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: var(--eerie-black); /* 视频加载前的背景色 */
+  margin: 20px auto; /* 居中和边距 */
+  border-radius: var(--radius-10); /* 圆角 */
+  box-shadow: var(--shadow-1);    /* 阴影 */
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
